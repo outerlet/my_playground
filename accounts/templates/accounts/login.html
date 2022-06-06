@@ -1,0 +1,25 @@
+{% extends "accounts/base.html" %}
+{% block title %}ログインフォーム{% endblock %}
+{% block main %}
+<form action="{% url 'accounts:login' %}" method="post" xmlns="http://www.w3.org/1999/html">
+    {% csrf_token %}
+    {% for field in form %}
+        <div>
+            {{ field.label }}{{ field }}
+            {% if field.errors %}
+                {% for error in field.errors %}
+                    <div class="error-feedback">{{ error }}</div>
+                {% endfor %}
+            {% endif %}
+        </div>
+    {% endfor %}
+    <div>
+        {% for non_field_error in form.non_field_errors %}
+            <div class="error-feedback">
+                {{ non_field_error }}
+            </div>
+        {% endfor %}
+    </div>
+    <input type="submit" value="送信" />
+</form>
+{% endblock %}

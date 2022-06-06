@@ -1,0 +1,16 @@
+{% extends "accounts/base.html" %}
+{% block title %}Book List{% endblock %}
+{% block main %}
+    {% include "accounts/_header.html" %}
+    <table border="1">
+    {% for book in book_list %}
+        <tr>
+            <td>{{ forloop.counter }}</td>
+            <td>{{ book.title }}</td>
+            <td>{{ book.description|default_if_none:""|urlize }}</td>
+            <td>{{ book.price|default_if_none:"未登録" }}</td>
+        </tr>
+    {% endfor %}
+    </table>
+    <a href="{% url 'accounts:another' %}">Another Page</a>
+{% endblock %}

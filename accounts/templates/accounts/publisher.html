@@ -1,0 +1,30 @@
+{% extends 'accounts/base.html' %}
+{% block title %}出版社登録{% endblock %}
+{% block main %}
+<form action="{% url 'accounts:publisher' %}" method="POST">
+  {% csrf_token %}
+  {% if form.non_field_errors %}
+    {% for nfe in form.non_field_errors %}
+      {{ nfe }}
+    {% endfor %}
+  {% endif %}
+  <table>
+  {% for field in form %}
+    <tr>
+      <td>
+        {{ field.label }}
+      </td>
+      <td>
+        {{ field }}
+      </td>
+    </tr>
+    {% if field.errors %}
+      {% for error in field.errors %}
+        {{ error }}
+      {% endfor %}
+    {% endif %}
+  {% endfor %}
+  </table>
+  <input type="submit" value="送信" />
+</form>
+{% endblock %}
