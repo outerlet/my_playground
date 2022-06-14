@@ -1,3 +1,4 @@
+from gettext import install
 from django.shortcuts import render
 from django.contrib import messages
 from django.views.generic.base import View
@@ -44,7 +45,11 @@ class LoginView(View):
 
 class PublisherView(View):
     def get(self, request, *args, **kwargs):
-        return render(request, "accounts/publisher.html", {'form': forms.PublisherForm()})
+        return render(
+            request,
+            "accounts/publisher.html",
+            {'form': forms.PublisherForm()}
+        )
 
     def post(self, request, *args, **kwargs):
         form = forms.PublisherForm(request.POST)
