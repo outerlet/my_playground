@@ -1,8 +1,30 @@
 <html>
     <head>
         <title>競馬トップ</title>
+        <style type="text/css">
+            table {
+                border-collapse: collapse;
+            }
+            th, td {
+                border:1px solid black;
+            }
+        </style>
     </head>
     <body>
         <h1>競馬アプリ用のビュー(作成中)</h1>
+        <table>
+            <tr>
+                <th>馬名</th>
+                <th>馬齢</th>
+                <th>性別</th>
+            </tr>
+            {% for horse in horse_list %}
+            <tr>
+                <td>{{ horse.name }}</td>
+                <td>{{ horse.age }}</td>
+                <td>{{ horse.sex }}</td>
+            </tr>
+            {% endfor %}
+        </table>
     </body>
 </html>
