@@ -22,4 +22,12 @@ class Horse(models.Model):
             return '牝'
 
     def __str__(self):
-        return f'name = {self.name}, age = {self.age}, sex = {self.sex_text()}'
+        return f'馬名: {self.name}, 年齢: {self.age}, 性別: {self.sex_text()}'
+
+class Race(models.Model):
+    class Meta:
+        db_table = 'races'
+
+    name = models.CharField(verbose_name='レース名', max_length=255, unique=True, null=False)
+    grade = models.CharField(verbose_name='格', max_length=10, unique=False, null=True)
+    terms = models.CharField(verbose_name='条件', max_length=255, null=True)
