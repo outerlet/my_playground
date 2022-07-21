@@ -8,4 +8,5 @@ app_name = 'keiba'
 
 urlpatterns = [
     path('', views.index, name='index'),
+    path('horses', views.horses, name='horses'),
 ]
